@@ -10,17 +10,17 @@
       <ImageView fx:id="imageInitial" fitHeight="256.0" fitWidth="256.0" layoutX="14.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imageNoised" fitHeight="256.0" fitWidth="256.0" layoutX="311.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="imageFiltered" fitHeight="256.0" fitWidth="256.0" layoutX="608.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
-      <Label alignment="CENTER" layoutX="80.0" layoutY="339.0" prefHeight="27.0" prefWidth="124.0" text="Изначальная">
+      <Label alignment="CENTER" layoutX="80.0" layoutY="339.0" prefHeight="27.0" prefWidth="124.0" text="Изначальное">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="377.0" layoutY="339.0" prefHeight="27.0" prefWidth="124.0" text="Зашумленная ">
+      <Label alignment="CENTER" layoutX="377.0" layoutY="339.0" prefHeight="27.0" prefWidth="124.0" text="Зашумленное">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="656.0" layoutY="339.0" prefHeight="27.0" prefWidth="160.0" text="Отфильтрованная">
+      <Label alignment="CENTER" layoutX="656.0" layoutY="339.0" prefHeight="27.0" prefWidth="160.0" text="Отфильтрованное">
          <font>
             <Font size="18.0" />
          </font>

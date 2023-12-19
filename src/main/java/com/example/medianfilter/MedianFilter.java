@@ -5,6 +5,7 @@ import javafx.scene.paint.Color;
 import java.util.Arrays;
 
 public class MedianFilter {
+    private final static int DIR = 5;
     public static Color[][] applyHorizontalMedianFilter(Color[][] input) {
         int height = input.length;
         int width = input[0].length;
@@ -12,10 +13,10 @@ public class MedianFilter {
 
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                double[] values = new double[5];
+                double[] values = new double[DIR];
 
-                for (int i = 0; i < 5; i++) {
-                    int neighborX = x - 2 + i;
+                for (int i = 0; i < DIR; i++) {
+                    int neighborX = x - DIR / 2 + i;
                     if (neighborX < 0) {
                         neighborX = 0;
                     } else if (neighborX >= width) {

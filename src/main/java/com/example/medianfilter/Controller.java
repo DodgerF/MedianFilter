@@ -6,8 +6,8 @@ import javafx.scene.image.*;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
-import java.nio.IntBuffer;
-import java.util.Random;
+
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -16,39 +16,22 @@ public class Controller implements Initializable {
     private ImageView imageNoised;
     @FXML
     private ImageView imageFiltered;
-
     private Color[][] pixels;
 
     private static final String FILENAME = "C:\\Users\\pro10\\IdeaProjects\\MediaFilter\\src\\main\\resources\\images\\parrot.jpg";
 
     public void click(){
+        Noise.addNoise(pixels);
+
         imageNoised.setImage(convertToImage(pixels));
-        imageFiltered.setImage(new Image(FILENAME));
-    }
 
-    private static int getGrayValue(int argb) {
-        int r = (argb >> 16) & 0xFF;
-        int g = (argb >> 8) & 0xFF;
-        int b = argb & 0xFF;
-        return (int) (0.2989 * r + 0.5870 * g + 0.1140 * b);
-    }
-
-    private static void addNoise(Color[][] imageArray, double rate) {
-        int numPixels = (int) (imageArray.length * imageArray[0].length * rate);
-        Random random = new Random();
-
-        for (int i = 0; i < numPixels; i++) {
-            int x = random.nextInt(imageArray[0].length);
-            int y = random.nextInt(imageArray.length);
-
-            double c = random.nextDouble();
-            if (c < 0.5) {
-                imageArray[y][x] = Color.BLACK; // or any other color of your choice
-            } else {
-                imageArray[y][x] = Color.WHITE; // or any other color of your choice
-            }
+        for (int i = 0; i < 3; i++){
+            pixels = MedianFilter.applyHorizontalMedianFilter(pixels);
         }
+
+        imageFiltered.setImage(convertToImage(pixels));
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Image image = new Image(FILENAME);
@@ -64,10 +47,7 @@ public class Controller implements Initializable {
                 pixels[x][y] = color;
             }
         }
-
-
-        double noiseRate = 0.5;
-        addNoise(pixels, noiseRate);
+        imageNoised.setImage(image);
     }
     public Image convertToImage(Color[][] pixelArray) {
         int width = pixelArray[0].length;
@@ -85,3 +65,4 @@ public class Controller implements Initializable {
         return image;
     }
 }
+
